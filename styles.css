@@ -39,10 +39,10 @@ main { display: block; }
 
 /* Fallbacks */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .menu, .block h2 { background: rgba(20, 20, 20, 0.7); }
+  .menu { background: rgba(20, 20, 20, 0.7); }
 }
 @media (prefers-reduced-transparency: reduce) {
-  .menu, .block h2 { background: rgba(20, 20, 20, 0.85); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .menu { background: rgba(20, 20, 20, 0.85); -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
 
 /* Image blocks: full width, zero gaps */
@@ -58,13 +58,8 @@ main { display: block; }
 .block h2 {
   position: absolute; z-index: 1; left: clamp(24px, 4vw, 64px); bottom: clamp(24px, 4vw, 56px);
   margin: 0; font-weight: 300; text-transform: uppercase;
-  letter-spacing: 0.28em; font-size: clamp(14px, 1.8vw, 26px); color: var(--ink);
-  /* frosted box, as the menu; right padding is smaller to offset the trailing letter-spacing */
-  line-height: 1; padding: 0.3em 0.2em 0.3em 0.5em;
-  background: var(--frost-bg);
-  -webkit-backdrop-filter: var(--frost-blur);
-  backdrop-filter: var(--frost-blur);
-  border-radius: 4px;
+  letter-spacing: 0.28em; font-size: clamp(11px, 1.2vw, 17px); color: var(--ink);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
 }
 
 /* Mobile: same frosted rectangle, tighter, typemark stacked above if it won't fit */
