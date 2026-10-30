@@ -1,0 +1,66 @@
+:root {
+  --ink: #fff;
+  --frost-bg: rgba(20, 20, 20, 0.28);
+  --frost-border: rgba(255, 255, 255, 0.18);
+  --pad: clamp(16px, 2.5vw, 32px);
+}
+
+html, body { margin: 0; padding: 0; background: #111; }
+body { font-family: "Jost", "Helvetica Neue", Arial, sans-serif; color: var(--ink); }
+main { display: block; }
+
+/* Header */
+.site-header {
+  position: fixed; inset: 0 0 auto 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: var(--pad); pointer-events: none;
+}
+.site-header > * { pointer-events: auto; }
+
+.typemark {
+  color: var(--ink); text-decoration: none; text-transform: uppercase;
+  letter-spacing: 0.22em; font-size: clamp(13px, 1.4vw, 18px);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+}
+
+.menu {
+  display: flex; gap: 28px; padding: 10px 22px;
+  background: var(--frost-bg);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid var(--frost-border); border-radius: 4px;
+}
+.menu a {
+  color: var(--ink); text-decoration: none; text-transform: uppercase;
+  letter-spacing: 0.16em; font-size: 12px;
+}
+.menu a:hover { opacity: 0.7; }
+.menu a:focus-visible, .typemark:focus-visible { outline: 1px solid var(--ink); outline-offset: 4px; }
+
+/* Fallbacks */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .menu { background: rgba(20, 20, 20, 0.7); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .menu { background: rgba(20, 20, 20, 0.85); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+/* Image blocks: full width, zero gaps */
+.block { position: relative; display: block; width: 100%; margin: 0; padding: 0; aspect-ratio: 16 / 9; overflow: hidden; }
+.block picture { display: block; width: 100%; height: 100%; }
+.block img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.block::after {          /* soft bottom scrim so white text reads on pale images */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0) 40%);
+}
+.block h2 {
+  position: absolute; z-index: 1; left: clamp(24px, 4vw, 64px); bottom: clamp(24px, 4vw, 56px);
+  margin: 0; font-weight: 300; text-transform: uppercase;
+  letter-spacing: 0.28em; font-size: clamp(28px, 5vw, 72px); color: var(--ink);
+}
+
+/* Mobile: same frosted rectangle, tighter, typemark stacked above if it won't fit */
+@media (max-width: 640px) {
+  .site-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .menu { gap: 16px; padding: 8px 14px; }
+}
