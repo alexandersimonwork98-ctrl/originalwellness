@@ -1,9 +1,7 @@
 :root {
   --ink: #fff;
-  --frost-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.04) 55%, rgba(255, 255, 255, 0.1)), rgba(20, 20, 20, 0.22);
-  --frost-border: rgba(255, 255, 255, 0.3);
-  --frost-blur: blur(22px) saturate(170%) brightness(1.05);
-  --frost-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 8px 32px rgba(0, 0, 0, 0.18);
+  --frost-bg: rgba(20, 20, 20, 0.28);
+  --frost-blur: blur(16px) saturate(120%);
   --pad: clamp(16px, 2.5vw, 32px);
 }
 
@@ -30,8 +28,7 @@ main { display: block; }
   background: var(--frost-bg);
   -webkit-backdrop-filter: var(--frost-blur);
   backdrop-filter: var(--frost-blur);
-  border: 1px solid var(--frost-border); border-radius: 4px;
-  box-shadow: var(--frost-shadow);
+  border-radius: 4px;
 }
 .menu a {
   color: var(--ink); text-decoration: none; text-transform: uppercase;
@@ -61,14 +58,13 @@ main { display: block; }
 .block h2 {
   position: absolute; z-index: 1; left: clamp(24px, 4vw, 64px); bottom: clamp(24px, 4vw, 56px);
   margin: 0; font-weight: 300; text-transform: uppercase;
-  letter-spacing: 0.28em; font-size: clamp(18px, 2.8vw, 40px); color: var(--ink);
+  letter-spacing: 0.28em; font-size: clamp(14px, 1.8vw, 26px); color: var(--ink);
   /* frosted box, as the menu; right padding is smaller to offset the trailing letter-spacing */
   line-height: 1; padding: 0.3em 0.2em 0.3em 0.5em;
   background: var(--frost-bg);
   -webkit-backdrop-filter: var(--frost-blur);
   backdrop-filter: var(--frost-blur);
-  border: 1px solid var(--frost-border); border-radius: 4px;
-  box-shadow: var(--frost-shadow);
+  border-radius: 4px;
 }
 
 /* Mobile: same frosted rectangle, tighter, typemark stacked above if it won't fit */
